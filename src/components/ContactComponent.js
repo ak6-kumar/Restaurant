@@ -22,15 +22,15 @@ class Contact extends Component{
 
     handleInput(event){
         const target = event.target;
-        const value = target.type==='checkbox'?event.check:event.value;
-        const name = event.name;
+        const value = target.type==='checkbox'?target.check:target.value;
+        const name = target.name;
 
         this.setState({[name]:value});
 
     }
 
     onSubmits(event) {
-        console.log("The current state is " + JSON.stringify(this.state));
+        // console.log("The current state is " + JSON.stringify(this.state));
         alert("The current state is" + JSON.stringify(this.state));
         event.preventDefault();
     }
@@ -128,8 +128,8 @@ class Contact extends Component{
                             <FormGroup row>
                                 <Label htmlFor="feedback" md={2}>Your Feedback</Label>
                                 <Col md={10}>
-                                <Input type="textarea"  placeholder="Give your feedback here" id="message" name="feedback"
-                                value={this.state.message} onChange={this.handleInput}/>
+                                <Input type="textarea"  placeholder="Give your feedback here" id="message" name="message"
+                                value={this.state.message} onChange={this.handleInput} row="12"/>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
