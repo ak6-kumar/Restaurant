@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Breadcrumb,BreadcrumbItem,Button,Form,FormGroup,Col,Label,Input} from 'reactstrap';
+import {Breadcrumb,BreadcrumbItem,Button,Form,FormGroup,Col,Label,Input,FormFeedback} from 'reactstrap';
 import {Link} from 'react-router-dom';
 
 
@@ -88,25 +88,25 @@ class Contact extends Component{
                                     First Name
                                 </Label>
                                 <Col md={10}>
-                                <Input placeholder="First Name" type="text" id="firstname" name="firstname" value={this.state.firstname} onChange={this.handleInput}/>
+                                <Input placeholder="First Name" required type="text" id="firstname" name="firstname" value={this.state.firstname} onChange={this.handleInput}/>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
                                 <Label htmlFor="lastname" md={2}>Last Name</Label>
                                 <Col md={10}>
-                                <Input id="lastname" name="lastname" type="text" placeholder="Last Name" value={this.state.lastname} onChange={this.handleInput}/>
+                                <Input id="lastname" name="lastname" required type="text" placeholder="Last Name" value={this.state.lastname} onChange={this.handleInput}/>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
                                 <Label htmlFor="telnum" md={2}>Telephone Number</Label>
                                 <Col md={10}>
-                                <Input type="tel" placeholder="Telephone Number" id="telnum" name="telnum" value={this.state.telnum} onChange={this.handleInput}/>
+                                <Input type="tel" required placeholder="Telephone Number" id="telnum" name="telnum" value={this.state.telnum} onChange={this.handleInput}/>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
                                 <Label htmlFor="email" md={2}>Email</Label>
                                 <Col md={10}>
-                                <Input type="email" placeholder="Email" id="email" name="email" value={this.state.email} onChange={this.handleInput}/>
+                                <Input type="email" placeholder="Email" id="email" required name="email" value={this.state.email} onChange={this.handleInput}/>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -119,7 +119,7 @@ class Contact extends Component{
                                 </FormGroup>
                                 </Col>
                                 <Col md={{size:3,offset:1}}>
-                                    <Input type="select" name="contactType" value={this.state.contactType} onChange={this.handleInput}>
+                                    <Input type="select" name="contactType" required value={this.state.contactType} onChange={this.handleInput}>
                                     <option>Tel.</option>
                                     <option>Email</option>
                                     </Input>
@@ -128,7 +128,7 @@ class Contact extends Component{
                             <FormGroup row>
                                 <Label htmlFor="feedback" md={2}>Your Feedback</Label>
                                 <Col md={10}>
-                                <Input type="textarea"  placeholder="Give your feedback here" id="message" name="message"
+                                <Input type="textarea"  placeholder="Give your feedback here" required id="message" name="message"
                                 value={this.state.message} onChange={this.handleInput} row="12"/>
                                 </Col>
                             </FormGroup>
