@@ -1,37 +1,64 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import {baseUrl} from '../shared/baseUrl';
+import {Loading} from './LoadingComponent';
+import {Fade,Stagger} from 'react-animation-components';
 
 
 function About(props) {
-    const leaders = props.leaders.map((leader) => {
+    const leaders = props.leaders.leaders.map((leader) => {
         return (
+            <Fade in>
             <p>Leader {leader.name}</p>
+            </Fade>
         );
     });
-    const Leadership = props.leaders.map((leader)=>{
-        return(
+    const Leadership = props.leaders.leaders.map((leader)=>{
+        if(props.leaders.isLoading){
+            return(
             <div className="container">
-            <div className="row">
-                <Media>
-                    <div className="mr-5">
-                    <Media top left>
-                        <Media object src='assets/images/alberto.png' alt={leader.name}/>
-                    </Media>
-                    </div>
-                    <div className="m-2">
-                    <Media body>
-                        <Media heading>{leader.name}</Media>
-                        <Media >{leader.designation}</Media>
-                        <Media>{leader.description}</Media>
-                    </Media>
-                    </div>
-                </Media>
-                <br/>
-                <br/>
+                <div className="row">
+                    <Loading/>
+                </div>
             </div>
+            );
+        }
+        else if(props.leaders.errmsg){
+            return (
+                <div className="container">
+                <div className="row">
+                    <h4>{props.errmsg}</h4>
+                </div>
             </div>
-        );
+            );
+        }
+        else{
+            return(
+                <div className="container">
+                <div className="row">
+                    <Media>
+                        <Fade in>
+                        <div className="mr-5">
+                        <Media top left>
+                            <Media object src={baseUrl+leader.image} alt={leader.name}/>
+                        </Media>
+                        </div>
+                        <div className="m-2">
+                        <Media body>
+                            <Media heading>{leader.name}</Media>
+                            <Media >{leader.designation}</Media>
+                            <Media>{leader.description}</Media>
+                        </Media>
+                        </div>
+                        </Fade>
+                    </Media>
+                    <br/>
+                    <br/>
+                </div>
+                </div>
+            );
+        }
     });
 
     return(
@@ -90,13 +117,17 @@ function About(props) {
                 </div>
                 <div className="col-12">
                     <Media list>
+                        <Stagger in>
                         {leaders}
+                        </Stagger>
                     </Media>
                 </div>
             </div>
             <div className="row row-content">
                 <div className="col-12">
+                <Stagger in>
                     {Leadership}
+                    </Stagger>
                 </div>
             </div>
         </div>
