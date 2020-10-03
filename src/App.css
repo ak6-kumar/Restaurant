@@ -53,3 +53,19 @@ address{
     transform: translate(100%);
     transition: all 300ms ease-out;
 }
+
+.ravi{
+     opacity: 1;
+       font-size:80%;
+    margin:0px;
+    color:#0f0f0f;
+}
+.bhaskar{
+     padding:70px 30px 70px 30px;
+    margin:0px auto;
+    background: #9575CD ;
+    color:floralwhite;
+}
+    
+    
+    
